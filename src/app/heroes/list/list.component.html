@@ -1,0 +1,28 @@
+<h3>Listado de heroes</h3>
+
+<!-- ejemplo de ngif else, si no se cumple que la variable deletedHero sea verdadero,
+lo que hay en el ng-template se mostrará en la pagina, para esto se apoya en la referencia
+nothingWasDeleted -->
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Héroe borrado <small class="text-danger"> {{deletedHero}} </small></h3>
+</div>
+
+<!--este ng template existira en la pagina siempre y cuando se cumpla el else del div anterior,
+se usa el simbolo # para hacer referencia -->
+<ng-template #nothingWasDeleted>
+  <h3>No ha borrado nada</h3>
+</ng-template>
+
+
+<button
+  *ngIf="heroNames.length > 0"
+  (click)="removeLastHero()"
+  class="btn btn-outline-danger">
+  Borrar ultimo héroe
+</button>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames" class="list-group-item">
+    {{ name }}
+  </li>
+</ul>
