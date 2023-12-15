@@ -1,0 +1,27 @@
+<h1> DBZ Personajes</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <dbz-list [listaPersonajes]="characters" (onDeletedId)="onDeleteCharacter($event)"></dbz-list> <!--componentes
+    con la instruccion [characterList]="characters" estamos diciendole al componente
+    dbz-list que va a recibir la variable characterList definida con el decorador
+    Input() el arreglo que definimos en main-page.components, con esto pasamos variables
+    de un componente padre a un componente hijo. A su vez tambien esta a la escucha
+    del evento que se propague en el boton eliminar de la lista, para pasar informaicion
+    del componente hijo al padre-->
+  </div>
+
+
+  <!--en estas lineas estamos configurando que la main page (componente padre)
+    esta a la escucha cada vez que el componente add-dbz-character se dispare el evento
+    que configuramos con el decorador @Output, una vez que se propague a la mainPage,
+    procesaremos la informacion recibida con el metodo onNewCharacter y le mandaremos
+    como parametro $event (palabra reservada de angular para propagar los eventos, en este
+    caso los que sucedan con el decorador @Output)
+  -->
+  <div class="col">
+   <add-dbz-character (onNewCharacter)="onNewCharacter($event)"></add-dbz-character> <!--componentes-->
+  </div>
+
+</div>
